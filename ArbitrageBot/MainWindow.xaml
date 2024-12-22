@@ -1,0 +1,70 @@
+﻿<Window x:Class="ArbitrageBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Arbitrage Bot" Height="500" Width="600" Background="#2E3440" Foreground="White">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#4C566A" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#4C566A" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="5,0,0,0" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Настройки -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <Label Content="Количество SOL (например, 0.1):" />
+            <TextBox x:Name="txtSol" Text="0.1" />
+
+            <Label Content="Slippage (%):" />
+            <TextBox x:Name="txtSlippage" Text="0.5" />
+
+            <Label Content="Минимальный спред (USDC):" />
+            <TextBox x:Name="txtSpread" Text="1.0" />
+
+            <Label Content="Частота опроса (сек):" />
+            <TextBox x:Name="txtPollingInterval" Text="5" />
+
+            <Label Content="Пауза между попытками (сек):" />
+            <TextBox x:Name="txtRetryDelay" Text="10" />
+
+            <Label Content="Приватный ключ:" />
+            <TextBox x:Name="txtPrivateKey" Text="Введите приватный ключ" />
+        </StackPanel>
+
+        <!-- Логи -->
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch">
+            <Label Content="Логи программы:" />
+            <TextBox x:Name="txtLog" VerticalScrollBarVisibility="Auto" IsReadOnly="True" AcceptsReturn="True"
+                     Height="300" />
+        </StackPanel>
+
+        <!-- Кнопки -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,375,0,10" Grid.Column="1">
+            <Button x:Name="btnStart" Content="Запустить" Width="150" Click="BtnStart_Click" />
+            <Button x:Name="btnStop" Content="Остановить" Width="150" Click="BtnStop_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
